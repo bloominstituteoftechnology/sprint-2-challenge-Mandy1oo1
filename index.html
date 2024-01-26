@@ -6,23 +6,66 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
+      let activeStatus = profile.active
+      if (activeStatus === true){
+          if (reason === undefined){
+            return 'confirm status manually'
+          }
+        let falseProfile = {
+  active: false,
+  reason: `${reason}`}
+    return falseProfile
+        } else {
+          let trueProfile = {
+            active: true
+          }
+         return trueProfile
+        }
 
     }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
-    }
+      if (x < 1 || y > 3){
+      return 'invalid coordinates'
+     } else if (grid[y-1][x-1] === "🟦") {
+      return "🟦 🥳"
+    } else if (grid[y-1][x-1] === "🟥") {
+      return "🟥 💀"
+  }
+}
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+     let answer = {}
+      for (let i in obj){
+        let value = obj[i]
+        if (i.length > 9){
+          return 'shorten all prop names to 9 chars or less'
+        } else if (value === null){
+        } else if (value === 0){
+          answer[i] = false
+        } else if (value === 1){
+          answer[i] = true
+        } else if (typeof value === 'string'){
+          answer[i] = value
+        }
+      } return answer
 
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
-
+    let result = text
+    for (let word of forbidden) {
+        let blockedOut = ''
+        for (let char in word) {
+            blockedOut = blockedOut + 'x'
+        }
+        result = result.replaceAll(word, blockedOut)
     }
+    return result
+}
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
